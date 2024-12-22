@@ -51,7 +51,7 @@ class Apple(GameObject):
         """Sets a random position for the apple within the grid."""
         x = randint(0, GRID_WIDTH - 1) * GRID_SIZE
         y = randint(0, GRID_HEIGHT - 1) * GRID_SIZE
-        return x, y
+        return (x, y)
 
     def draw(self):
         """Draws the apple on the screen."""
@@ -81,10 +81,8 @@ class Snake(GameObject):
         """Moves the snake in the current direction."""
         head_x, head_y = self.positions[0]
         move_x, move_y = self.direction
-        new_head = (
-            (head_x + move_x * GRID_SIZE) % SCREEN_WIDTH,
-            (head_y + move_y * GRID_SIZE) % SCREEN_HEIGHT,
-        )
+        new_head = ((head_x + move_x * GRID_SIZE) % SCREEN_WIDTH,
+                    (head_y + move_y * GRID_SIZE) % SCREEN_HEIGHT)
 
         if len(self.positions) > 2 and new_head in self.positions[2:]:
             self.reset()
@@ -131,6 +129,7 @@ def main():
     pygame.init()
     snake = Snake()
     apple = Apple()
+
 
     while True:
         clock.tick(SPEED)
