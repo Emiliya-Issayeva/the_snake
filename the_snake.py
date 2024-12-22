@@ -51,7 +51,7 @@ class Apple(GameObject):
         """Sets a random position for the apple within the grid."""
         x = randint(0, GRID_WIDTH - 1) * GRID_SIZE
         y = randint(0, GRID_HEIGHT - 1) * GRID_SIZE
-        return (x, y)
+        return x, y
 
     def draw(self):
         """Draws the apple on the screen."""
